@@ -2,12 +2,12 @@
 
 ## Introduction
 
-This project is a simple virtual interviewer that can conduct an interview with a candidate and evaluate the candidate based on his/her responses.
+This project is a simple virtual interviewer that can conduct an interview specific to a position with a candidate and evaluate the candidate based on his/her responses.
 
 ## Requirements
 
 - Python 3.6 or above
-- OpenAI API key and module, use the link below to setup your API key so that you can run interviewer.py
+- OpenAI API key and module: use the link below to set your API key so that you can run interviewer.py
 https://platform.openai.com/docs/quickstart?context=python
 
 ## How to run
