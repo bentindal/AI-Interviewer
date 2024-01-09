@@ -21,20 +21,24 @@ while interview_in_progress:
 
     msg = response.choices[0].message.content
     message_list.append({"role": "user", "content": msg})
-    print(f'\n{msg}')
-    input_msg = input(">> ")
-    message_list.append({"role": "system", "content": input_msg})
 
-    if '=== INTERVIEW OVER ===' in msg:
-        interview_in_progress = False
-        break
+    words = msg.split()
+    for word in words:
+        if word == '===' or word == 'INTERVIEW' or word == 'OVER' or word == '===':
+            interview_in_progress = False
+            break
+    if interview_in_progress:
+        print(f'\n{msg}')
+        input_msg = input(">> ")
+        message_list.append({"role": "system", "content": input_msg})
 
-print('\nGoodbye!')
 # Save the conversation to a text file
-# Todays date/time 
 time_now = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 dir_location = f'{time_now}_{interview_name}_{interview_position}_interview_report.txt'
+message_list = message_list[2:]
+
 with open(dir_location, 'w') as f:
     for item in message_list:
-        f.write("%s\n" % item)
-print(f'Interview saved to {dir_location}')
+        f.write("%s\n" % item['content'])
+
+print(f'\nInterview Report saved to {dir_location}')
