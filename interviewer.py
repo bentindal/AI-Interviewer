@@ -32,9 +32,11 @@ while interview_in_progress:
         input_msg = input(">> ")
         message_list.append({"role": "system", "content": input_msg})
 
+print(f'\n{msg}')
+
 # Save the conversation to a text file
 time_now = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-dir_location = f'{time_now}_{interview_name}_{interview_position}_interview_report.txt'
+dir_location = f'{time_now}_{interview_name}_interview_report.txt'
 message_list = message_list[2:]
 
 with open(dir_location, 'w') as f:
